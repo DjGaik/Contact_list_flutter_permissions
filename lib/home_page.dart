@@ -1,7 +1,7 @@
+import 'package:flutter/material.dart';
 import 'dart:typed_data';
 import 'package:flutter_contact_list/permission.dart';
 import 'package:flutter_contacts/flutter_contacts.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_contact_list/contact_info.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -54,17 +54,23 @@ class _MyHomePageState extends State<MyHomePage> {
                     ? (_contacts![index].phones.first.number)
                     : _contacts![index].displayName;
                 return ListTile(
-                    leading: (_contacts![index].photo == null)
-                        ? const CircleAvatar(child: Icon(Icons.person))
-                        : CircleAvatar(backgroundImage: MemoryImage(image!)),
-                    title: Text(
-                    _contacts![index].displayName),
-                    subtitle: Text(num),
-                    trailing: const Icon(Icons.keyboard_arrow_right),
-                    onTap: () {
-                      Route route = MaterialPageRoute(builder: (context) => const ContactInfo());
-                      Navigator.push(context, route);
-                    });
+                  leading: (_contacts![index].photo == null)
+                      ? const CircleAvatar(child: Icon(Icons.person))
+                      : CircleAvatar(backgroundImage: MemoryImage(image!)),
+                  title: Text(_contacts![index].displayName),
+                  subtitle: Text(num),
+                  trailing: const Icon(Icons.keyboard_arrow_right),
+                  onTap: () {
+                    Route route = MaterialPageRoute(
+                      builder: (context) => ContactInfo(
+                        image: _contacts![index].photo,
+                        displayName: _contacts![index].displayName,
+                        phoneNumber: _contacts![index].phones.first.number,
+                      ),
+                    );
+                    Navigator.push(context, route);
+                  },
+                );
               },
             ),
     );
