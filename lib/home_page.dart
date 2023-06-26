@@ -1,8 +1,8 @@
 import 'dart:typed_data';
 import 'package:flutter_contact_list/permission.dart';
 import 'package:flutter_contacts/flutter_contacts.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_contact_list/contact_info.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -19,7 +19,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
-
     super.initState();
     getContact();
   }
@@ -45,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: (_contacts) == null
           ? const Center(
-              child: Text('Contact List'),
+              child: Text('Contacts List Is Empty'),
             )
           : ListView.builder(
               itemCount: _contacts!.length,
@@ -61,13 +60,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     title: Text(
                     _contacts![index].displayName),
                     subtitle: Text(num),
+                    trailing: const Icon(Icons.keyboard_arrow_right),
                     onTap: () {
-                      if (_contacts![index].phones.isNotEmpty) {
-                        launchUrl(Uri(
-                          scheme: 'tel',
-                          path: num,
-                        ));
-                      }
+                      Route route = MaterialPageRoute(builder: (context) => const ContactInfo());
+                      Navigator.push(context, route);
                     });
               },
             ),

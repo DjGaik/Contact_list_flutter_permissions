@@ -20,9 +20,24 @@ class _PermissionViewState extends State<PermissionView> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
-          onPressed: getContactPermission, child: const Text('Get contacts')),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text(
+          'Потрібно надати доступ до контактів!',
+          style: TextStyle(
+            fontSize: 20.0,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 50),
+        ElevatedButton(
+          onPressed: () {
+            getContactPermission();
+          },
+          child: const Text('Надати доступ'),
+        ),
+      ],
     );
   }
 }
