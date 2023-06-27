@@ -63,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   onTap: () {
                     Route route = MaterialPageRoute(
                       builder: (context) => ContactInfo(
-                        image: _contacts![index].photo,
+                        contactImage: MemoryImage(image!),
                         displayName: _contacts![index].displayName,
                         phoneNumber: _contacts![index].phones.first.number,
                       ),
