@@ -27,6 +27,8 @@ class _PermissionViewState extends State<PermissionView> {
           'Потрібно надати доступ до контактів!',
           style: TextStyle(
             fontSize: 20.0,
+            color: Colors.white,
+            decoration: TextDecoration.none,
           ),
           textAlign: TextAlign.center,
         ),
